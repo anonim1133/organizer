@@ -1,4 +1,7 @@
 services:
+    Users.Authentify:
+        class: Skelet\UserBundle\Utils\Authentify
+        arguments: [ "@doctrine.orm.entity_manager" ]
 #    user.example:
 #        class: Skelet\UserBundle\Example
 #        arguments: ["@service_id", "plain_value", %parameter%]
