@@ -20,10 +20,13 @@ class SignUpControllerTest extends WebTestCase {
 	$crawler = $client->request('GET', '/signUp');
 
 	$form = $crawler->selectButton('SignIn')->form();
+	
+	$login = 'anonim1133';
+	$password = 'testt';
 
 	$crawler_form = $client->submit($form, array(
-	    'users[login]' => 'anonim1133',
-	    'users[password]' => 'test',
+	    'users[login]' => $login,
+	    'users[password]' => $password,
 	));
 
 	$this->checkStatusCode($client, $crawler_form);

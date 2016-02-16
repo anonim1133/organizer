@@ -1,8 +1,8 @@
 <?php
 
 namespace Skelet\UserBundle\Entity;
-use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -10,10 +10,11 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="users")
  * @ORM\Entity(repositoryClass="Skelet\UserBundle\Repository\UsersRepository")
+ * @ORM\HasLifecycleCallbacks
  * @UniqueEntity("login", message="Username is already taken"))
  */
-class Users
-{
+class Users {
+
     /**
      * @var int
      *
@@ -37,15 +38,27 @@ class Users
      */
     private $password;
 
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="registration_date", type="datetime")
+     */
+    private $registrationDate;
+
+    /**
+     * @ORM\PrePersist
+     */
+    public function onPrePersistSetRegistrationDate() {
+	$this->registrationDate = new \DateTime();
+    }
 
     /**
      * Get id
      *
      * @return int
      */
-    public function getId()
-    {
-        return $this->id;
+    public function getId() {
+	return $this->id;
     }
 
     /**
@@ -55,11 +68,10 @@ class Users
      *
      * @return Users
      */
-    public function setLogin($login)
-    {
-        $this->login = $login;
+    public function setLogin($login) {
+	$this->login = $login;
 
-        return $this;
+	return $this;
     }
 
     /**
@@ -67,9 +79,8 @@ class Users
      *
      * @return string
      */
-    public function getLogin()
-    {
-        return $this->login;
+    public function getLogin() {
+	return $this->login;
     }
 
     /**
@@ -79,11 +90,10 @@ class Users
      *
      * @return Users
      */
-    public function setPassword($password)
-    {
-        $this->password = $password;
+    public function setPassword($password) {
+	$this->password = $password;
 
-        return $this;
+	return $this;
     }
 
     /**
@@ -91,9 +101,17 @@ class Users
      *
      * @return string
      */
-    public function getPassword()
-    {
-        return $this->password;
+    public function getPassword() {
+	return $this->password;
     }
-}
 
+    /**
+     * Get registrationDate
+     *
+     * @return \DateTime 
+     */
+    public function getRegistrationDate() {
+	return $this->registrationDate;
+    }
+
+}
