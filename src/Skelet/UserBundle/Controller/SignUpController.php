@@ -23,7 +23,7 @@ class SignUpController extends Controller {
 	    $em = $this->getDoctrine()->getManager();
 	    $em->persist($entity);
 	    $em->flush();
-	    
+
 	    $result = $this->redirectToRoute('signupSuccess', ['login' => $entity->getLogin()]);
 	}else{
 	    $result = $this->render('UserBundle:SignUp:sign_up.html.twig', [
@@ -49,7 +49,7 @@ class SignUpController extends Controller {
      * @return Form
      */
     private function createSignUpForm($entity) {
-	$form = $this->createForm(\Skelet\UserBundle\Form\UsersType::class, $entity, array(
+	$form = $this->createForm(\Skelet\UserBundle\Form\UsersSignUpType::class, $entity, array(
 	    'action' => $this->generateUrl('signup'),
 	    'method' => 'POST',
 	));

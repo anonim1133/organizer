@@ -25,13 +25,14 @@ class SignUpControllerTest extends WebTestCase {
 	$password = 'testt';
 
 	$crawler_form = $client->submit($form, array(
-	    'users[login]' => $login,
-	    'users[password]' => $password,
+	    'users_sign_up[login]' => $login,
+	    'users_sign_up[password][first]' => $password,
+	    'users_sign_up[password][second]' => $password
 	));
 
 	$this->checkStatusCode($client, $crawler_form);
 
-	$this->assertEquals('Username is already taken', $crawler_form->filter('form[name=users] > div ul')->first()->text());
+	$this->assertEquals('Username is already taken', $crawler_form->filter('form[name=users_sign_up] > div ul')->first()->text());
     }
 
     public function testNewLogin() {
@@ -45,8 +46,9 @@ class SignUpControllerTest extends WebTestCase {
 	$password = substr(md5('login').time(), 24);
 
 	$crawler_form = $client->submit($form, [
-	    'users[login]' => $login,
-	    'users[password]' => $password,
+	    'users_sign_up[login]' => $login,
+	    'users_sign_up[password][first]' => $password,
+	    'users_sign_up[password][second]' => $password
 	]);
 
 	$this->checkStatusCode($client, $crawler_form, 302);
