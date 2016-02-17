@@ -1,16 +1,10 @@
-{% extends "::base.html.twig" %}
-
-{% block title %}AppBundle:Boards:list{% endblock %}
-
-{% block body %}
-    <h1>Welcome to the Boards:list page</h1>
-    {% if boards is defined %}
-	<ul id="boards">
-	    {% for board in boards %}
-		<li class="parent-board">
-		    <p class="title"> {{ board.title }} </p>
-		</li>
-	    {% endfor %}
-	</ul>
-    {% endif %}
-{% endblock %}
+<h1>Welcome to the Boards:list page</h1>
+{% if boards is defined %}
+    <ul id="boards">
+	{% for board in boards %}
+	    <li class="parent-board">
+		<p class="title"> {{ board.title }} </p>
+	    </li>
+	{% endfor %}
+    </ul>
+{% endif %}

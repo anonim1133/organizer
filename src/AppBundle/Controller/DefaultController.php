@@ -13,8 +13,8 @@ class DefaultController extends Controller {
      */
     public function indexAction(Request $request) {
 	$username = $this->get('security.token_storage')->getToken()->getUser();
-	return $this->render('default/index.html.twig', [
-		    'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..'),
+	return $this->render('AppBundle:Default:index.html.twig', [
+		    'base_dir' => realpath($this->getParameter('kernel.root_dir') . '/..'),
 		    'username' => $username,
 	]);
     }
