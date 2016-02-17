@@ -25,13 +25,16 @@ class Authentify {
      * @return boolean
      */
     public function check($login, $password) {
-	$user = $this->em->getRepository('UserBundle:Users')->signin($login, $password);
-
 	$result = FALSE;
+	$user = $this->em->getRepository('UserBundle:Users')->findOneBy(['login' => $login]);
 	
-	if(!empty($user))
+	if (!empty($user) && password_verify($password, $user->getPassword())) {
 	    $result = TRUE;
-	    
+	    if (password_needs_rehash($password, PASSWORD_DEFAULT, ['cost' => $user->getPasswordCost()])) {
+		$user->setPassword($password);
+	    }
+	}
+
 	return $result;
     }
 

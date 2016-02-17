@@ -34,7 +34,7 @@ class Users {
     /**
      * @var string
      *
-     * @ORM\Column(name="password", type="string", length=32, unique=false)
+     * @ORM\Column(name="password", type="string", length=255, unique=false)
      */
     private $password;
 
@@ -91,7 +91,7 @@ class Users {
      * @return Users
      */
     public function setPassword($password) {
-	$this->password = md5($password);
+	$this->password = password_hash($password, PASSWORD_DEFAULT, ['cost' => $this->getPasswordCost()]);
 
 	return $this;
     }
@@ -105,6 +105,15 @@ class Users {
 	return $this->password;
     }
 
+    /**
+     * Get password cost
+     *
+     * @return int
+     */
+    public function getPasswordCost() {
+	return 10;
+    }
+    
     /**
      * Get registrationDate
      *
