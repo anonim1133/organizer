@@ -2,6 +2,9 @@ services:
     Users.Authentify:
         class: Skelet\UserBundle\Utils\Authentify
         arguments: [ "@doctrine.orm.entity_manager" ]
+    Users.Authorize:
+        class: Skelet\UserBundle\Utils\Authorize
+        arguments: [ "@doctrine.orm.entity_manager", "@service_container", "@session" ]
 #    user.example:
 #        class: Skelet\UserBundle\Example
 #        arguments: ["@service_id", "plain_value", %parameter%]

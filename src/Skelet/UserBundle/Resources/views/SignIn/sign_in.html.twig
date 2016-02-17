@@ -1,0 +1,16 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}UserBundle:SignIn:signin{% endblock %}
+
+{% block body %}
+    <h1>Welcome to the SignSignIn:signIn page</h1>
+    {{ form(form) }}
+    
+    <div id="error">
+	<span>
+	    {% if error is defined %}
+		{{ error }}
+	    {% endif %}
+	</span>
+    </div>
+{% endblock %}
