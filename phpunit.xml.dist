@@ -18,6 +18,9 @@
         <testsuite name="SkeletUsers">
             <directory>src/Skelet/UserBundle/Tests</directory>
         </testsuite>
+        <testsuite name="AppBundle">
+            <directory>src/AppBundle/</directory>
+        </testsuite>
     </testsuites>
 
     <php>
