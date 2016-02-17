@@ -34,7 +34,7 @@ class Users {
     /**
      * @var string
      *
-     * @ORM\Column(name="password", type="string", length=32, unique=true)
+     * @ORM\Column(name="password", type="string", length=32, unique=false)
      */
     private $password;
 
