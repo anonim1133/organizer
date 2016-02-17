@@ -19,7 +19,7 @@ class UsersRepository extends \Doctrine\ORM\EntityRepository {
     public function signin($login, $password) {
 	$em = $this->getEntityManager();
 
-	$user = $em->getRepository("UserBundle:Users")->findOneBy(['login' => $login, 'password' => md5($password)]);
+	$user = $em->getRepository("UserBundle:Users")->findOneBy(['login' => $login, 'password' => $password]);
 
 	return $user;
     }
