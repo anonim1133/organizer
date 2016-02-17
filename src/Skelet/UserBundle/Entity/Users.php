@@ -123,4 +123,7 @@ class Users {
 	return $this->registrationDate;
     }
 
+    public function __toString() {
+	return $this->getLogin();
+    }
 }

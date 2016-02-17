@@ -52,7 +52,7 @@ class Authorize {
 	if (empty($user)) {
 	    $result = FALSE;
 	} else {
-	    $token = new UsernamePasswordToken($user->getLogin(), $user->getPassword(), 'main', ['USER']);
+	    $token = new UsernamePasswordToken($user, $user->getPassword(), 'main', ['USER']);
 	    $this->services->get('security.token_storage')->setToken($token);
 	    $this->session->set('_security_main', serialize($token));
 
