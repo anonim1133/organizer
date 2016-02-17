@@ -28,6 +28,8 @@ class BoardsControllerTest extends WebTestCase {
 	$client = static::createClient();
 
 	$crawler = $client->request('GET', '/list');
+	
+	$this->assertGreaterThan(0, $crawler->filter('ul#boards li.parent-board p.title')->count());
     }
 
     public function testShow() {

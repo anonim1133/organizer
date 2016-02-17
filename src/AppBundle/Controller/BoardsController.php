@@ -36,8 +36,10 @@ class BoardsController extends Controller {
      * @Route("/list")
      */
     public function listAction() {
+	$boards = $this->getDoctrine()->getManager()->getRepository('AppBundle:Boards')->findAll();
+	
 	return $this->render('AppBundle:Boards:list.html.twig', array(
-			// ...
+	    'boards' => $boards
 	));
     }
 
