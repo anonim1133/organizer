@@ -4,7 +4,7 @@
     <div id="wrapper">
         <div id="container">
             <div id="welcome">
-                <h1><span>Welcome <span id="signedin-login">{% if username is defined %} {{ username }} {%  endif %}</span> to</span> Symfony {{ constant('Symfony\\Component\\HttpKernel\\Kernel::VERSION') }}</h1>
+                <h1><span>Welcome <span id="signedin-login">{% if username is defined and username != "anon." %} {{ username }} {%  endif %}</span> to</span> Symfony {{ constant('Symfony\\Component\\HttpKernel\\Kernel::VERSION') }}</h1>
             </div>
 
             <div id="status">
