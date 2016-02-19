@@ -1,0 +1,11 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}AppBundle:Auth:signin{% endblock %}
+
+{% block body %}
+    <h1>Welcome to thedd Auth:signin page</h1>
+    {% autoescape false %}
+	{{ form }}
+    {% endautoescape %}
+
+{% endblock %}

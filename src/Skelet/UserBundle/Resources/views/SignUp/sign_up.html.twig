@@ -1,8 +1,11 @@
-{% extends "::base.html.twig" %}
-
-{% block title %}UserBundle:SignUp:signUp{% endblock %}
-
-{% block body %}
-    <h1>Welcome to the SignUp:signUp page</h1>
+<div id="signup-form">
     {{ form(form) }}
-{% endblock %}
+
+    <div id="error">
+	<span>
+	    {% if error is defined %}
+		{{ error }}
+	    {% endif %}
+	</span>
+    </div>
+</div>

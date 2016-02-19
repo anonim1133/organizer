@@ -3,6 +3,9 @@
 {% block body %}
     <div id="wrapper">
         <div id="container">
+	    
+	    {{ render(controller('AppBundle:Auth:SignIn')) }}
+	    
             <div id="welcome">
                 <h1><span>Welcome <span id="signedin-login">{% if username is defined and username != "anon." %} {{ username }} {%  endif %}</span> to</span> Symfony {{ constant('Symfony\\Component\\HttpKernel\\Kernel::VERSION') }}</h1>
             </div>
